@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Status Checker</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 transition-colors duration-200 font-inter">
+    <div class="container mx-auto px-4 py-8 max-w-2xl">
+        <div class="flex justify-end mb-4">
+            <button id="darkModeToggle" class="p-2 rounded-lg bg-white dark:bg-gray-700 dark:text-white shadow-lg hover:shadow-xl transition-all duration-200">
+                🌓 Toggle Theme
+            </button>
+        </div>
+        
+        <h1 class="text-4xl font-bold text-center mb-8 text-gray-800 dark:text-white bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+            Is It Down Or Just Me?
+        </h1>
+        
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-8 backdrop-blur-lg bg-opacity-90 dark:bg-opacity-90">
+            <form id="checkForm" class="mb-6">
+                <div class="flex gap-3">
+                    <input 
+                        type="url" 
+                        id="urlInput" 
+                        placeholder="Enter website URL (e.g., https://example.com)"
+                        class="flex-1 p-3 border border-gray-200 rounded-xl dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                        required
+                    >
+                    <button 
+                        type="submit"
+                        class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-xl hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg"
+                    >
+                        Check Status
+                    </button>
+                </div>
+            </form>
+
+            <div id="loader" class="hidden">
+                <div class="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent mx-auto"></div>
+            </div>
+
+            <div id="result" class="hidden">
+                <div id="statusBadge" class="text-center text-3xl mb-6 font-bold"></div>
+                <div id="details" class="space-y-3 text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 p-4 rounded-xl"></div>
+            </div>
+        </div>
+
+        <div id="history" class="mt-8 bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-8 backdrop-blur-lg bg-opacity-90 dark:bg-opacity-90">
+            <h2 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Check History</h2>
+            <div id="historyList" class="space-y-3"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

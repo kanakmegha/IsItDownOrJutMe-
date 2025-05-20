@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --success-color: #10B981;
+    --error-color: #EF4444;
+    --background-light: #f3f4f6;
+    --text-light: #1f2937;
+    --background-dark: #111827;
+    --text-dark: #f3f4f6;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.status-up {
+    color: var(--success-color);
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+.status-down {
+    color: var(--error-color);
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+}
+
+/* Improve history section visibility */
+#history {
+    display: block !important;
+}
+
+#history h2 {
+    color: var(--text-light);
+}
+
+html.dark #history h2 {
+    color: var(--text-dark);
+}
+
+.history-item {
+    @apply p-4 bg-gray-50 dark:bg-gray-700 rounded-xl shadow-md hover:shadow-lg;
+    transition: all 0.3s ease;
+}
+
+.history-item:hover {
+    transform: translateX(5px) translateY(-2px);
+}
+
+/* Dark mode improvements */
+html.dark {
+    color-scheme: dark;
+}
+
+.dark .bg-white {
+    background-color: var(--background-dark);
+}
+
+.dark .text-gray-600 {
+    color: var(--text-dark);
+}
+
+/* Gradient animations */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.bg-gradient-animate {
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+}
